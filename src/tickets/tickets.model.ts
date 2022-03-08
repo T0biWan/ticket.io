@@ -1,4 +1,4 @@
-import { ForbiddenException } from '@nestjs/common';
+import { ForbiddenException } from '@nestjs/common'
 import {v4 as uuidv4} from 'uuid'
 
 
@@ -6,10 +6,9 @@ const barcode_error_request = 'please provide a valid barcode, of not more than 
 const regex_alphanumeric = new RegExp(/^[a-z0-9]+$/i)
 
 export class Ticket {
-    id: string; 
+    id: string
  
     constructor (private barcode: string, private firstName: string, private lastName: string) {
-        console.log()
         if (barcode.length < 1) throw new ForbiddenException(`${barcode_error_request} - you entered an empty string`)
         if (barcode.length < 1) throw new ForbiddenException(`${barcode_error_request} - you entered an empty string`)
         if (!regex_alphanumeric.test(barcode)) throw new ForbiddenException(`${barcode_error_request} - you entered non-alphanumeric characters`)
