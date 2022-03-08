@@ -13,8 +13,8 @@ export class TicketsService {
         return [ticket, index]
     }
 
-    addTicket (barcode: string, firstName: string, lastName: string) {
-        const newTicket = new Ticket(barcode, firstName, lastName)
+    addTicket (eventId: string, barcode: string, firstName: string, lastName: string) {
+        const newTicket = new Ticket(eventId, barcode, firstName, lastName)
         TicketsService.tickets.push(newTicket)
                 
         return newTicket.id
@@ -29,10 +29,11 @@ export class TicketsService {
         return { ...ticket }
     }
 
-    updateTicket (ticketId: string, barcode: string, firstName: string, lastName: string) {
+    updateTicket (ticketId: string, eventId: string, barcode: string, firstName: string, lastName: string) {
         const [ticket, index] = this.findTicket(ticketId)
         const updatedTicket = {...ticket}
         
+        if (eventId) updatedTicket.eventId = eventId
         if (barcode) updatedTicket.barcode = barcode
         if (firstName) updatedTicket.firstName = firstName
         if (lastName) updatedTicket.lastName = lastName

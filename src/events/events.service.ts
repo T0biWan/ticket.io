@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from "@nestjs/common"
+import { Ticket } from "src/tickets/tickets.model"
 import { Event } from "./events.model"
 
 
@@ -29,13 +30,14 @@ export class EventsService {
         return { ...event }
     }
 
-    updateEvent (eventId: string, eventTitle: string, eventDate: Date, eventCity: string) {
+    updateEvent (eventId: string, eventTitle: string, eventDate: string, eventCity: string, tickets: Ticket[]) {
         const [event, index] = this.findEvent(eventId)
         const updatedEvent = {...event}
         
         if (eventTitle) updatedEvent.eventTitle = eventTitle
         if (eventDate) updatedEvent.eventDate = eventDate
         if (eventCity) updatedEvent.eventCity = eventCity
+        if (tickets) updatedEvent.tickets = tickets
 
         EventsService.events[index] = updatedEvent
     }

@@ -8,7 +8,7 @@ const regex_alphanumeric = new RegExp(/^[a-z0-9]+$/i)
 export class Ticket {
     id: string
  
-    constructor (public barcode: string, public firstName: string, public lastName: string) {
+    constructor (public eventId: string, public barcode: string, public firstName: string, public lastName: string) {
         if (barcode.length < 1) throw new ForbiddenException(`${barcode_error_request} - you entered an empty string`)
         if (barcode.length < 1) throw new ForbiddenException(`${barcode_error_request} - you entered an empty string`)
         if (!regex_alphanumeric.test(barcode)) throw new ForbiddenException(`${barcode_error_request} - you entered non-alphanumeric characters`)
