@@ -4,7 +4,8 @@ import {v4 as uuidv4} from 'uuid'
 export class Event {
     id: string; 
  
-    constructor (private eventTitle: string, private eventDate: Date, private eventCity: string, private tickets: [Ticket]) {
-        this.id = uuidv4()
+    constructor (public eventTitle: string, public eventDate: Date, public eventCity: string, public tickets: [Ticket]) {
+        // this.id = uuidv4()
+        this.id = '13'
     }
 }
