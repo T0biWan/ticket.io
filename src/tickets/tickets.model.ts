@@ -10,7 +10,7 @@ export class Ticket {
  
     constructor (public eventId: string, public barcode: string, public firstName: string, public lastName: string) {
         if (barcode.length < 1) throw new ForbiddenException(`${barcode_error_request} - you entered an empty string`)
-        if (barcode.length < 1) throw new ForbiddenException(`${barcode_error_request} - you entered an empty string`)
+        if (barcode.length > 8) throw new ForbiddenException(`${barcode_error_request} - the entered string is too long`)
         if (!regex_alphanumeric.test(barcode)) throw new ForbiddenException(`${barcode_error_request} - you entered non-alphanumeric characters`)
         this.id = uuidv4()
     }
