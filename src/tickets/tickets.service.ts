@@ -4,9 +4,9 @@ import { Ticket } from "./tickets.model"
 
 @Injectable()
 export class TicketsService {
-    private static tickets: Ticket[] = []
+    static tickets: Ticket[] = []
 
-    private findTicket (ticketId: string): [Ticket, number] {
+    findTicket (ticketId: string): [Ticket, number] {
         const index = TicketsService.tickets.findIndex(ticket => ticket.id === ticketId)
         const ticket = TicketsService.tickets[index]
         if (!ticket) throw new NotFoundException(`Could'nt find Ticket with id: ${ticketId}`)

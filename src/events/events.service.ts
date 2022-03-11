@@ -5,9 +5,9 @@ import { Event } from "./events.model"
 
 @Injectable()
 export class EventsService {
-    private static events: Event[] = []    
+    static events: Event[] = []    
 
-    private findEvent (eventId: string): [Event, number] {
+    findEvent (eventId: string): [Event, number] {
         const index = EventsService.events.findIndex(event => event.id === eventId)
         const event = EventsService.events[index]
         if (!event) throw new NotFoundException(`Could'nt find Event with id: ${eventId}`)
